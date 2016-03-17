@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
 import android.util.DisplayMetrics;
 
@@ -47,23 +48,25 @@ public class Layout extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float currX = event.getX();
-        float currY = event.getY();
+        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+            float currX = event.getX();
+            float currY = event.getY();
 
-        if(null == GetClickedBubble((int)currX, (int)currY))
-        {
-            return false;
+            if(null == GetClickedBubble((int)currX, (int)currY))
+            {
+                return false;
+            }
+
+            //do your operations here
+            Intent descriptionActivity = new Intent(this.getContext(), Information.class);
+            //EditText infoText = (EditText) findViewById(R.id.information);
+            String description  = " Hello India! things will change soon ";
+
+            descriptionActivity.putExtra(EXTRA_MESSAGE, description);
+
+            this.getContext().startActivity(descriptionActivity);
+            invalidate();
         }
-
-        //do your operations here
-        Intent descriptionActivity = new Intent(this.getContext(), Information.class);
-        //EditText infoText = (EditText) findViewById(R.id.information);
-        String description  = " Hello India ";
-
-        descriptionActivity.putExtra(EXTRA_MESSAGE, description);
-
-        this.getContext().startActivity(descriptionActivity);
-        invalidate();
         return true;
     }
 
@@ -159,6 +162,29 @@ public class Layout extends View {
         c.drawCircle(position.x, position.y, 100, ballPaint);
 
         return  new Bubble(position.x, position.y, 100);
+    }
+
+    //TODO: need to complete this,
+    //basically this draws an arrow(fillable)
+    // filling need to be done
+    private Path CreatePath(float x, float y)
+    {
+        Path linkPath = new Path();
+        linkPath.moveTo(x+200,y);//------>
+        linkPath.moveTo(x,y-40);//------
+        linkPath.moveTo(x+5,y+50);//------
+        linkPath.moveTo(x-5,y+50);//------
+        linkPath.moveTo(x, y - 40);//------
+        linkPath.moveTo(x - 200, y);//<------
+        linkPath.moveTo(x,y-10);
+
+
+        //need to fill the arrow
+        return linkPath;
+    }
+    private void DrawLink(Canvas c, Path path, Paint paint)
+    {
+        c.drawPath(path,paint);
     }
 
 

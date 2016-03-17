@@ -22,5 +22,19 @@ public class MainActivity extends AppCompatActivity {
         ballView.drawCircle(c);
     }
 
+    //Initializes the apps home screen
+    //based on his location, current time, and season and
+    //many more deciding factors can be considered here.
+    //Based on all those factors it asks / suggests things to user.
+    private void Initialize() {
+
+    }
+
+    //Based on user selection get the content from
+    // the server and draw the flowchart
+    private void Preparation() {
+
+    }
+
 
 }

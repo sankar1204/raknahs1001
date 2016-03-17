@@ -1,0 +1,70 @@
+each bubble will be a class
+class bubble
+{
+	canvas  circle;
+	canvas  diamond;
+	canvas 	forward;
+}
+
+
+
+collection < name, value > 
+
+loop through( collection)
+{
+	name => processValue
+}
+
+
+which circle touched
+{
+	
+}
+
+
+
+		10 11 12 13 14 15 16 17 18 19 
+		20 21 22 23 24 25 26 27 28 29
+		30 31 32 33 34 35 36 37 38 39
+		40 41 42 43 44 45 46 47 48 49
+		50 51 52 53 55 55 56 57 58 59
+		60 61 62 63 66 66 66 67 68 69
+		
+		example rectangle
+		-------------------------------------
+		| 1,1 x,y 				 	6,1 a,y |
+		|									|
+		|									|
+		|									|
+		| 1,4 x,b					6,4 a,b |
+		-------------------------------------
+		
+		width + x = a
+		height + y = b
+		
+		
+		width = diameter / square root of 2
+		height = width // square :)
+		
+		diameter = 2 * radius
+		
+		rect {
+		
+			x, y
+			a, b
+			width
+			height
+						
+			boolean DidHeTouchYou(){
+				
+			}
+		
+		}
+		
+		how to get a square from a circle diaganal = square root of 2 * side
+		but now I need side = diaganal / square root of 2
+		
+		
+
+The input format / the content format what we get from the server
+it should depict the complete scenario
