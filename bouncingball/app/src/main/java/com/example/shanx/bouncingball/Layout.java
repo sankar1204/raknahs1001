@@ -42,6 +42,9 @@ public class Layout extends View {
 
     Bitmap b = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
     Paint ballPaint = new Paint();
+    Paint linkPaint = new Paint();
+    Paint textPaint = new Paint();
+
     HashMap<Integer, Bubble> BubblesCollection = new HashMap<>();
 
     public final static String EXTRA_MESSAGE = "com.example.shanx.bouncingball.MESSAGE";
@@ -123,10 +126,7 @@ public class Layout extends View {
     {
         if(IsSpaceThere())
         {
-            WhereToDraw();
-            bubbleCount ++;
-            Bubble newBubble = Draw(c);
-            BubblesCollection.put(bubbleCount, newBubble);
+            onDraw(c);
             return true;
         }
         else
@@ -141,9 +141,6 @@ public class Layout extends View {
         if(bubbleCount == 0) {
             position = homePosition;
         }
-        else {
-            // calculate and assign position x and y values
-        }
     }
 
     private boolean IsSpaceThere() {
@@ -152,14 +149,78 @@ public class Layout extends View {
 
     protected void onDraw(Canvas c)
     {
-        ballPaint.setColor(Color.YELLOW);
-        c.drawCircle(position.x, position.y, 100, ballPaint);
+        super.onDraw(c);
+        Path path = new Path();
+        path.setFillType(Path.FillType.EVEN_ODD);
+
+        ballPaint.setColor(Color.GREEN);
+
+        linkPaint.setColor(Color.RED);
+        linkPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        linkPaint.setStrokeWidth(40);
+
+        textPaint.setColor(Color.WHITE);
+        textPaint.setTextSize(10);
+        textPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+
+        c.drawCircle(150, 150, 100, ballPaint);
+        c.drawText("Step1", 150, 150, textPaint);
+        path.moveTo(150, 250);
+        path.lineTo(150, 350);
+        path.close();
+        c.drawPath(path, linkPaint);
+
+        c.drawCircle(150, 450, 100, ballPaint);
+        c.drawText("Step2", 150, 450, textPaint);
+        path.moveTo(150, 550);
+        path.lineTo(150, 650);
+        path.close();
+        c.drawPath(path, linkPaint);
+
+        c.drawCircle(150, 750, 100, ballPaint);
+        c.drawText("Step3", 150, 750, textPaint);
+        path.moveTo(150, 850);
+        path.lineTo(150, 950);
+        path.close();
+        c.drawPath(path,linkPaint);
     }
 
     private Bubble Draw(Canvas c)
     {
+        super.onDraw(c);
+        Path path = new Path();
+        path.setFillType(Path.FillType.EVEN_ODD);
+
         ballPaint.setColor(Color.YELLOW);
-        c.drawCircle(position.x, position.y, 100, ballPaint);
+
+        linkPaint.setColor(Color.RED);
+        linkPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        linkPaint.setStrokeWidth(40);
+
+        textPaint.setColor(Color.WHITE);
+        textPaint.setTextSize(10);
+        textPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+
+        c.drawCircle(150, 150, 100, ballPaint);
+        c.drawText("Step1", 150, 150, textPaint);
+        path.moveTo(150, 250);
+        path.lineTo(150, 350);
+        path.close();
+        c.drawPath(path, linkPaint);
+
+        c.drawCircle(150, 450, 100, ballPaint);
+        c.drawText("Step2", 150, 450, textPaint);
+        path.moveTo(150, 550);
+        path.lineTo(150, 650);
+        path.close();
+        c.drawPath(path, linkPaint);
+
+        c.drawCircle(150, 750, 100, ballPaint);
+        c.drawText("Step3", 150, 750, textPaint);
+        path.moveTo(150, 850);
+        path.lineTo(150, 950);
+        path.close();
+        c.drawPath(path,linkPaint);
 
         return  new Bubble(position.x, position.y, 100);
     }
