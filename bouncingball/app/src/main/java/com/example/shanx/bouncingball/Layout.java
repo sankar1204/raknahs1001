@@ -160,7 +160,7 @@ public class Layout extends View {
         linkPaint.setStrokeWidth(40);
 
         textPaint.setColor(Color.WHITE);
-        textPaint.setTextSize(10);
+        textPaint.setTextSize(30);
         textPaint.setStyle(Paint.Style.FILL_AND_STROKE);
 
         c.drawCircle(150, 150, 100, ballPaint);
